@@ -1,6 +1,17 @@
 package config
 
-import "os"
+import (
+	"os"
+	"fmt"
+	"log"
+	"net/http"
+)
+
+func InitApp(setup map[string]string)  {
+	fmt.Println("Servidor iniciado, presione ctrl+c para finalizar.")
+	fmt.Println("puerto: ",setup["port"])
+	log.Fatal(http.ListenAndServe(setup["port"], GetRoutes()))//ciclo infinito app
+}
 
 func GetConfig()(config map[string]string)  {
 	config = map[string]string{
