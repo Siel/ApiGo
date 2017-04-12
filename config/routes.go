@@ -2,7 +2,7 @@ package config
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/siel/apiTest/controller"
+	"github.com/siel/ApiGo/controller"
 )
 
 func GetRoutes() *mux.Router{

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/siel/apiTest/config"
+	"github.com/siel/ApiGo/config"
 )
 
 
