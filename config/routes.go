@@ -2,15 +2,18 @@ package config
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/siel/apiTest/controllers"
+	"github.com/siel/apiTest/controller"
 )
 
 func GetRoutes() *mux.Router{
 	var router = mux.NewRouter().StrictSlash(true)
 
-	router.HandleFunc("/", controllers.Index)
-	router.HandleFunc("/mensaje/{mensaje}", controllers.Mensaje)
+	router.HandleFunc("/", controller.Index)
+	//router.HandleFunc("/message", controller.Message).Methods("POST")
+	router.HandleFunc("/suma", controller.Suma).Methods("POST")
+	//router.HandleFunc("/message/{message}", controller.Message)
 
 	return router
 }
+
 
