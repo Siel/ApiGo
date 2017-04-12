@@ -42,11 +42,20 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 func Suma(w http.ResponseWriter, r *http.Request) {
 	setup(r)
+	//recibir
 	var req suma_req
 	b, _ := ioutil.ReadAll(r.Body)
 	json.Unmarshal(b, &req)
+	//procesar
 	result :=req.A+req.B
-
+	//enviar
+	bs,err:=json.Marshal(suma_response{Response:result})
+	if err != nil {
+		panic(err)
+	}
+	w.Header().Set("Content-Type","application/json")
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(suma_response{Response:result})
+	w.Write(bs)
+	//TODO: nota mental, revisar https://github.com/gin-gonic/gin
+	//json.NewEncoder(w).Encode(suma_response{Response:result})
 }

@@ -7,9 +7,9 @@ import (
 	"net/http"
 )
 
+
 func InitApp(setup map[string]string)  {
-	fmt.Println("Servidor iniciado, presione ctrl+c para finalizar.")
-	fmt.Println("puerto: ",setup["port"])
+	fmt.Println("Service started at port:",setup["port"], "press ctrl+c to finish.")
 	log.Fatal(http.ListenAndServe(setup["port"], GetRoutes()))//ciclo infinito app
 }
 
